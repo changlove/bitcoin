@@ -1,61 +1,13 @@
 {
-  "$comment": "The builtin-baseline corresponds to 2025.03.19 Release",
-  "$schema": "https://raw.githubusercontent.com/microsoft/vcpkg-tool/main/docs/vcpkg.schema.json",
-  "builtin-baseline": "b02e341c927f16d991edbd915d8ea43eac52096c",
-  "dependencies": [
-    "boost-multi-index",
-    "boost-signals2",
-    "libevent"
+  "name": "bitcoin",                          // ชื่อโปรเจกต์: bitcoin
+  "version-string": "1.0.0",                  // เวอร์ชันของโปรเจกต์
+  "dependencies": [                           // รายการไลบรารีที่โปรเจกต์นี้ต้องใช้
+    "boost",                                  // ไลบรารี Boost (เครื่องมือ C++ มาตรฐาน)
+    "libevent",                               // ไลบรารีสำหรับจัดการ event-driven network
+    "openssl",                                // ไลบรารีเข้ารหัสและความปลอดภัย
+    "sqlite3",                                // ระบบฐานข้อมูล SQLite แบบฝัง
+    "univalue",                               // ไลบรารี JSON ที่ใช้กับ Bitcoin
+    "zeromq"                                  // ไลบรารีระบบสื่อสารแบบ message queue
   ],
-  "default-features": [
-    "qt",
-    "tests",
-    "wallet",
-    "zeromq"
-  ],
-  "features": {
-    "qt": {
-      "description": "Build GUI, Qt 6",
-      "dependencies": [
-        {
-          "name": "qtbase",
-          "default-features": false,
-          "features": [
-            "gui",
-            "network",
-            "png",
-            "testlib",
-            "widgets"
-          ]
-        },
-        "qttools",
-        "libqrencode"
-      ]
-    },
-    "tests": {
-      "description": "Build test_bitcoin.exe executable",
-      "dependencies": [
-        "boost-test"
-      ]
-    },
-    "wallet": {
-      "description": "Enable wallet (SQLite)",
-      "dependencies": [
-        "sqlite3"
-      ]
-    },
-    "zeromq": {
-      "description": "Enable ZMQ notifications",
-      "dependencies": [
-        "zeromq"
-      ]
-    }
-  },
-  "overrides": [
-    {
-      "$comment": "Newer unreleased libevent versions cause https://github.com/bitcoin/bitcoin/issues/30096",
-      "name": "libevent",
-      "version": "2.1.12#7"
-    }
-  ]
+  "builtin-baseline": "2be1214ce3dc9f5e522aeff50c1f7cbdf15d2d68" // จุดอ้างอิงเวอร์ชันของ vcpkg
 }
